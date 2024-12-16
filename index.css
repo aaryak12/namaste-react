@@ -1,3 +1,7 @@
+.app {
+    margin: 10px 20px;
+}
+
 .header {
    display: flex;
    justify-content: space-between;
@@ -31,7 +35,6 @@
 .res-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 10px;
 }
 
 .res-card {
@@ -47,8 +50,7 @@
     cursor: pointer;
 }
 
-.search {
-    padding: 15px;
+.filter-btn {
     margin: 10px;
 }
 

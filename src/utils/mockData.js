@@ -1,29 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/**
- * Header
- * - Logo
- * - Nav Items
- * Body
- * - Search
- * - RestaurantContainer
- *  - RestaurantCard
- *    - Restaurant Logo
- *    - Name, Cuisine, Rating, ETA
- * Footer
- * - Copyright
- * - Links
- * - Address
- * - Contact
- */
-
-const restaurantList = [
+const resList = [
   {
     info: {
       id: "802287",
       name: "The Belgian Waffle Co.",
-      cloudinaryImageId: "https://bakewithzoha.com/wp-content/uploads/2023/07/belgian-liege-waffles-featured.jpg",
+      cloudinaryImageId:
+        "https://bakewithzoha.com/wp-content/uploads/2023/07/belgian-liege-waffles-featured.jpg",
       locality: "DECISION TOWERS",
       areaName: "Maharshinagar",
       costForTwo: "₹200 for two",
@@ -353,7 +334,7 @@ const restaurantList = [
       areaName: "AVDHOOT HIGHTS",
       costForTwo: "₹200 for two",
       cuisines: ["Burgers", "American", "Fast Food", "Snacks"],
-      avgRating: 4.2,
+      avgRating: 3.8,
       parentId: "972",
       avgRatingString: "4.2",
       totalRatingsString: "1.8K+",
@@ -447,7 +428,8 @@ const restaurantList = [
     info: {
       id: "255152",
       name: "The Biryani Life",
-      cloudinaryImageId: "https://product-assets.faasos.io/eatsure_cms/production/9a3b6e57-6302-4b00-b551-56840352f0d2.jpg",
+      cloudinaryImageId:
+        "https://product-assets.faasos.io/eatsure_cms/production/9a3b6e57-6302-4b00-b551-56840352f0d2.jpg",
       locality: "Datta nagar chowk",
       areaName: "Ambegaon",
       costForTwo: "₹250 for two",
@@ -740,76 +722,4 @@ const restaurantList = [
   },
 ];
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const { resData } = props;
-  const {
-    name,
-    cuisines,
-    costForTwo,
-    avgRating,
-    cloudinaryImageId,
-  } = resData?.info;
-  const {deliveryTime} = resData?.info?.sla;
-  return (
-    <div className="res-card">
-      <img
-        src={cloudinaryImageId}
-        alt="res-logo"
-        className="res-logo"
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} rated</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{deliveryTime} minutes</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res-container">
-        {restaurantList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
- 
+export default resList;
