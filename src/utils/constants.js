@@ -5,4 +5,4 @@ export const LOGO_URL =
   "https://cdn.dribbble.com/users/1635051/screenshots/4291569/socio_curry_logo-01.png";
 
 export const SWIGGY_API =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.437973605399232&lng=73.86362334666698";
+  "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.437973605399232&lng=73.86362334666698";
