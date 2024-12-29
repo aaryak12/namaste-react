@@ -1,36 +1,27 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
-import { SWIGGY_API } from "../utils/constants";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { useRestaurants } from "../utils/useRestaurants";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const {
+    listOfRestaurants,
+    filteredRestaurants,
+    searchRestaurants,
+    topRated,
+  } = useRestaurants();
 
-  const fetchData = async () => {
-    const data = await fetch(SWIGGY_API);
-    const json = await data.json();
+  const onlineStatus = useOnlineStatus();
 
-    setListOfRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  if (onlineStatus === false) {
+    return (
+      <h1>Looks like you're offline! Please check your internet connection.</h1>
     );
-    setFilteredRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-
-  const topRated = () => {
-    const filteredList = listOfRestaurants.filter(
-      (res) => res.info.avgRating > 4
-    );
-    setFilteredRestaurants(filteredList);
-  };
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -48,10 +39,7 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRestaurant);
+              searchRestaurants(searchText);
             }}
           >
             Search
