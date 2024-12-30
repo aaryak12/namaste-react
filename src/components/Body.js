@@ -13,6 +13,7 @@ const Body = () => {
     filteredRestaurants,
     searchRestaurants,
     topRated,
+    viewAll,
   } = useRestaurants();
 
   const onlineStatus = useOnlineStatus();
@@ -52,6 +53,14 @@ const Body = () => {
           }}
         >
           Top Rated Restaurants
+        </button>
+        <button
+          className="view-all-btn"
+          onClick={() => {
+            viewAll();
+          }}
+        >
+          View all Restaurants
         </button>
       </div>
       <div className="res-container">

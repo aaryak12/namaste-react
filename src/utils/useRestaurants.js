@@ -28,8 +28,12 @@ export const useRestaurants = () => {
     setFilteredRestaurants(filteredList);
   };
 
+  const viewAll = () => {
+    setFilteredRestaurants(listOfRestaurants);
+  };
+
   const searchRestaurants = (searchText) => {
-    listOfRestaurants.filter((res) =>
+    const filteredRestaurant = listOfRestaurants.filter((res) =>
       res.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredRestaurants(filteredRestaurant);
@@ -40,5 +44,6 @@ export const useRestaurants = () => {
     filteredRestaurants,
     topRated,
     searchRestaurants,
+    viewAll
   };
 };
