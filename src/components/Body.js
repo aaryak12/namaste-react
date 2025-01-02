@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -7,6 +7,8 @@ import { useOnlineStatus } from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   const {
     listOfRestaurants,
@@ -38,7 +40,8 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="m-2 px-2 py-1 bg-green-100 rounded-md"
+          <button
+            className="m-2 px-2 py-1 bg-green-100 rounded-md"
             onClick={() => {
               searchRestaurants(searchText);
             }}
@@ -69,7 +72,11 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurant/" + restaurant?.info?.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.avgRating >= 4.4 ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
