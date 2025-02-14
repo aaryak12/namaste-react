@@ -28,7 +28,7 @@ const ItemList = ({ items }) => {
             </div>
           </div>
           <img
-            className="w-3/12 p-4"
+            className="w-2/12 p-4"
             src={CDN_URL + item?.card?.info?.imageId}
             alt="item-image"
           />
