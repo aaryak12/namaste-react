@@ -50,4 +50,12 @@ Two types of Exports/Imports:
 - Normal JS utlity function
 - 2 very imp hooks - mostly used
   - useState()
-  - useEffect() 
+  - useEffect()
+
+# Redux Toolkit
+ - Install @reduxjs/toolkit and react-redux
+ - Build our store
+ - Connect our store to our app
+ - Create cart slice
+ - dispatch(action)
+ - read data using selector
